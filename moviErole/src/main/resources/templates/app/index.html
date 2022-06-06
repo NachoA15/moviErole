@@ -1,0 +1,142 @@
+<!-- ============================== SEARCH ================================= -->
+<!-- Donde se encuentra la barra de búsqueda para comenzar a buscar contenido -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Movierole - Search</title>
+  <link rel="shortcut icon" th:href="@{/img/logoblanco2.ico}" type="image/x-icon" />
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link th:href="@{/vendor/aos/aos.css}" rel="stylesheet" type="text/css">
+  <!-- Ajustar a pantalla -->
+  <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet" type="text/css">
+  <!-- Iconos de Github -->
+  <link th:href="@{/vendor/boxicons/css/boxicons.min.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/vendor/glightbox/css/glightbox.min.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/vendor/remixicon/remixicon.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/vendor/swiper/swiper-bundle.min.css}" rel="stylesheet" type="text/css">
+
+  <!-- Template Main CSS File -->
+  <link href="css/style.css" rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+
+  <!-- =======================================================
+  * Template Name: Arsha - v4.7.1
+  * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+  <!-- ================================== HEADER ==================================== -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center">
+      <a href="/app"><img th:src="@{/img/logoblanco2.png}" alt="" width="40" height="40"></a><p>&nbsp;&nbsp;&nbsp;
+      <h1 class="logo me-auto"><a href="/app">MoviErole</a></h1></p>
+      <!-- ========= NAVBAR ========= -->
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="/app">Search</a></li>
+          <li><a class="nav-link scrollto" href="app/about">About</a></li>
+          <li><a class="getstarted scrollto" th:href="@{/app/topMovies}">Top Movies</a></li>
+          <li><a class="getstarted scrollto" th:href="@{/app/topSeries}">Top Series</a></li>
+          <li><a th:href="@{/app/myUser}" th:text="${loggedUser.userName}" style="color:#73c5eb"></a></li>
+          <li><a th:href="@{/app/myUser}"><img th:src="@{{img}(img=${loggedUser.img})}" width="40" height="40" class="circular_square"></a></li>
+          <li><a th:href="@{/logout}"><img th:src="@{/img/logout2.png}" alt="" width="25" height="25"></a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+      <!-- ======= END NAVBAR ======= -->
+    </div>
+  </header>
+  <!-- ================================ END HEADER ================================== -->
+
+  <!-- =================================== HERO ===================================== -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container">
+      <h1></h1>
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1">
+          <h1>Search media</h1>
+        </div>
+      </div>
+
+      <br>
+      <br>
+      <br>
+
+      <!-- === SEARCH BAR FORM === -->
+      <form th:action="@{/app/query}" method="get" th:object="${query}">
+
+        <div class="input-group mb-3 input-group-lg">
+          <select class="btn btn-secondary dropdown-toggle" th:field="*{type}" id="inlineFormCustomSelectPref">
+            <option class="text-start" value="1" th:value="Search">Search All</option>
+            <option class="text-start" value="2" th:value="SearchMovie">Search Movie</option>
+            <option class="text-start" value="3" th:value="SearchSeries">Search Series</option>
+          </select>
+
+          <input th:field="*{keyWord}" type="text" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-lg">
+          <button type="submit" class="btn btn-primary">Search</button>
+
+
+        </div>
+      </form>
+      <!-- === END SEARCH BAR FORM === -->
+
+      <br>
+
+      <!-- Botón de Logout -->
+      <div class="d-flex justify-content-center justify-content-lg-start">
+        <a th:href="@{/logout}" class="btn-get-started scrollto">Logout</a>
+      </div>
+      <br>
+      <div class="d-flex justify-content-center justify-content-lg-start">
+        <a th:href="@{/app/myUser}" class="btn-get-started scrollto">Go to your profile</a>
+      </div>
+
+    </div>
+
+  </section>
+  <!-- ================================== END HERO ==================================== -->
+
+
+  <!-- =================================== FOOTER ===================================== -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+        </div> <a href="https://pbs.twimg.com/ext_tw_video_thumb/1382627727409356804/pu/img/GdGmoTLvnJw63kpO.jpg" style="color:white">Coronel</a>
+      </div>
+    </div>
+  </footer>
+  <!-- =============================== END FOOTER ================================= -->
+
+  
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

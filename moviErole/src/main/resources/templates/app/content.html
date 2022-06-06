@@ -1,0 +1,405 @@
+<!-- =================================== CONTENT ====================================== -->
+<!-- Página donde encontramos toda la información relacionada con un contenido concreto -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <div id="message"></div>
+
+  <title th:text="${result.title}"></title>
+  <link rel="shortcut icon" th:href="@{/img/logoblanco2.ico}" type="image/x-icon" />
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link th:href="@{/vendor/aos/aos.css}" rel="stylesheet" type="text/css">
+  <!-- Ajustar a pantalla -->
+  <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet" type="text/css">
+  <!-- Iconos de Github -->
+  <link th:href="@{/vendor/boxicons/css/boxicons.min.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/vendor/glightbox/css/glightbox.min.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/vendor/remixicon/remixicon.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/vendor/swiper/swiper-bundle.min.css}" rel="stylesheet" type="text/css">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+  <link href="http://fonts.cdnfonts.com/css/afterglow" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Arsha - v4.7.1
+  * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+  <!-- ================================== HEADER ==================================== -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center">
+      <a href="/app"><img th:src="@{/img/logoblanco2.png}" alt="" width="40" height="40"></a>
+      <p>&nbsp;&nbsp;&nbsp;
+      <h1 class="logo me-auto"><a href="/app">MoviErole</a></h1>
+      </p>
+      <!-- ========= NAVBAR ========= -->
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="/app">Search</a></li>
+          <li><a class="nav-link scrollto" href="/app/about">About</a></li>
+          <li><a class="getstarted scrollto" th:href="@{/app/topMovies}">Top Movies</a></li>
+          <li><a class="getstarted scrollto" th:href="@{/app/topSeries}">Top Series</a></li>
+          <li><a th:href="@{/app/myUser}" th:text="${loggedUser.userName}" style="color:#73c5eb"></a></li>
+          <li><a th:href="@{/app/myUser}"><img th:src="@{{img}(img=${loggedUser.img})}" width="40" height="40"
+                class="circular_square"></a></li>
+          <li><a th:href="@{/logout}"><img th:src="@{/img/logout2.png}" alt="" width="25" height="25"></a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+      <!-- ======= END NAVBAR ======= -->
+    </div>
+  </header>
+  <!-- ================================ END HEADER ================================== -->
+
+
+  <!-- =================================== MAIN ===================================== -->
+  <main id="main">
+
+    <!-- ======= BREADCRUMBS ======= -->
+    <section id="breadcrumbs" class="breadcrumbs fs-1" style="background-color:#37517e">
+      <div class="container">
+        <h1></h1>
+        <h2></h2>
+        <b>
+          <h1 th:text="${result.title}" style="color:whitesmoke"></h1>
+        </b>
+        <h2 th:text="${result.year}" style="color:rgb(200, 200, 200)"></h2>
+      </div>
+    </section>
+    <!-- ======= END BREADCRUMBS ======= -->
+
+    <!-- ======= INNER PAGE ======= -->
+    <!-- Aquí se encuentran los datos del contenido -->
+    <section class="inner-page" style="background-color:rgb(222, 222, 222)">
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-8">
+
+            <!-- Título -->
+            <div>
+              <input type="hidden" th:value="${result.title}" id="movieTitle">
+              <h3><label for="title">Title: </label>
+                <span th:text="${result.title}"></span>
+              </h3>
+            </div>
+
+            <!-- Año -->
+            <div>
+              <h3><label for="year">Year: </label>
+                <span th:text="${result.year}"></span>
+              </h3>
+            </div>
+
+            <br>
+
+            <!-- Director/es -->
+            <div>
+              <h4><label for="directors">Director/s: </label>
+                <span th:text="${result.directors}"></span>
+              </h4>
+            </div>
+
+            <!-- Cast principal -->
+            <div>
+              <h4><label for="stars">Main cast: </label>
+                <span th:text="${result.stars}"></span>
+              </h4>
+            </div>
+
+            <br>
+
+            <!-- Título original -->
+            <div>
+              <input type="hidden" th:value="${result.originalTitle}" id="origTitle">
+              <h5><label for="originalTitle">Original Title: </label>
+                <span id="spanOrigTitle" th:text="${result.originalTitle}"></span>
+              </h5>
+            </div>
+
+            <!-- Tipo (película o serie) -->
+            <div>
+              <h5><label for="type">Type: </label>
+                <span th:text="${result.type}"></span>
+              </h5>
+            </div>
+
+            <!-- Género -->
+            <div>
+              <h5><label for="genres">Genre: </label>
+                <span th:text="${result.genres}"></span>
+              </h5>
+            </div>
+
+            <!-- Fecha de estreno -->
+            <div>
+              <h5><label for="releaseDate">Release Date: </label>
+                <span th:text="${result.releaseDate}"></span>
+              </h5>
+            </div>
+
+            <!-- Duración -->
+            <div>
+              <h5><label for="runtimeMins">Runtime (mins): </label>
+                <span th:text="${result.runtimeMins}"></span>
+              </h5>
+            </div>
+
+            <br>
+
+            <!-- Argumento-->
+            <!-- Mostrado dentro de un card -->
+            <div class="card">
+              <div class="card-body" style="background-color:whitesmoke">
+                <div>
+                  <h6><span th:text="${result.plot}"></span></h6>
+                </div>
+              </div>
+            </div>
+
+            <br>
+
+            <!-- Premios/Nominaciones -->
+            <div>
+              <h5><label for="awards"></label>
+                <span th:text="${result.awards}"></span>
+              </h5>
+            </div>
+
+            <br><br>
+
+            <!-- Puntuaciones -->
+            <h3>Ratings:</h3><br>
+            <!-- En IMDB -->
+            <div>
+              <h5><label for="imDbRating">
+                  <!-- Enlace a la página de IMDB -->
+                  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.imdb.com/">IMDB</a> Rating:</p>
+                </label>
+                <span th:text="${result.imDbRating}"></span>
+              </h5>
+            </div>
+            <!-- Votos en IMDB -->
+            <div>
+              <h5><label for="imDbRatingVotes">
+                  <!-- Enlace a la página de IMDB -->
+                  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.imdb.com/">IMDB</a> Rating Votes:</p>
+                </label>
+                <span th:text="${result.imDbRatingVotes}"></span>
+              </h5>
+            </div>
+            <!-- En Metacritic -->
+            <div>
+              <h5><label for="metacriticRating">
+                  <!-- Enlace a la página de Metacritic -->
+                  <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.metacritic.com">Metacritic </a>Rating: </p>
+                </label>
+                <span th:text="${result.metacriticRating}"></span>
+              </h5>
+            </div>
+
+            <div>
+              <h5><label for="averageRating"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Average rating from MoviErole users: </p></label>
+                <span th:text="${averageRating}"></span>
+              </h5>
+            </div>
+
+          </div>
+
+
+          <div class="col-lg-4">
+            <!-- Imagen de la carátula -->
+            <div class="image">
+              <img style="border:15px solid; color:whitesmoke" th:src=${result.image} onmouseout="width=300; height=450"
+                onmouseover="width=400;height=580" width="300" height="450">
+            </div>
+            <br>
+            <!-- Botones para añadir a listas de contenido -->
+            <form th:action="@{/app/myMovies/{id}(id=${result.id})}">
+              <input type="submit" value="Add to MyMovies" class="btn btn-primary">
+              <!-- Antes estaba puesto btn-success -->
+            </form>
+            <br>
+            <form th:action="@{/app/watchLater/{id}(id=${result.id})}">
+              <input type="submit" value="Add to Watch Later" class="btn btn-primary">
+            </form>
+          </div>
+
+          <!-- ======= COMMENTS ======= -->
+          <h2>Comments:</h2>
+
+          <input type="hidden" th:value="${loggedUser.userName}" id="kiko">
+          <!-- ========= TABLE ========= -->
+          <table class="table table-light table-hover  table-responsive" id="tabla">
+            <!-- Etiquetas de las columnas -->
+            <!-- Contenido de la tabla -->
+            <tbody>
+              <tr th:each="c : ${commentList}">
+                <td class="text-center" style="width:15%">
+                  <a th:text="${c.user.userName}" th:href="@{/app/user/{user}(user=${c.user.userName})}"></a></td>
+                <td class="text-center" th:text="${c.rating}" style="width:5%"></a></td>
+                <td class="text-start" th:text="${c.text}" style="width:70%"></td>
+                <td class="text-start" style="width:10%">
+                  <form th:action="@{/app/deleteComment/{idCont}/{idComen}(idCont=${result.id}, idComen=${c.id})}">
+                    <input type="hidden" value="Delete" class="btn btn-dangr" style="color:red"> 
+                  </form>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <script>
+            var table = document.getElementById("tabla");
+            var rowLength = table.rows.length;
+
+            for (var i = 0; i < rowLength; i += 1) {
+              var row = table.rows[i];
+              var a = row.cells[0].firstChild.nextSibling;
+              var b = row.cells[3].firstChild.nextSibling;
+              if (a.outerText == document.getElementById("kiko").value) {
+                a.href = "/app/myUser";
+                b.firstElementChild.type = "submit";
+              }
+            }
+          </script>
+
+          <!-- ========= TABLE ========= -->
+
+          <h3>Add a comment:</h3>
+
+          <!-- === FORM === -->
+          <form th:action="@{/app/comment}" method="post" th:object="${newComment}">
+            <div>
+              <input type="hidden" th:field="*{id}">
+            </div>
+
+            <!-- Este usuario corresponde al que está loggeado en ese momento -->
+            <!-- No es un campo que se rellene-->
+            <div>
+              <input id="pito" type="hidden" th:field="*{user}">
+            </div>
+
+            <div>
+              <input type="hidden" th:field="*{contentId}" th:value="${result.id}">
+            </div>
+            <p>Rating:</p>
+            <!-- Puntuación -->
+            <!-- Con un script controlaremos que esté entre 0 y 10 -->
+            <div class="col-lg-1">
+              <select class="form-select" aria-label="Default select example" id="rating">
+                <option selected value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+            </div>
+
+            <div>
+              <input type="hidden" th:field="*{rating}" id="aux">
+            </div>
+
+            <script>
+              const handler = (event) => {
+                document.getElementById("aux").value = document.getElementById("rating").value
+              }
+              document.getElementById("rating").addEventListener("change", handler)
+            </script>
+
+            <br>
+            <!-- Texto (el comentario en sí) -->
+            <div class="input-group">
+              <span class="input-group-text">Comment</span>
+              <textarea class="form-control" maxlength="500" th:field="*{text}"></textarea>
+            </div>
+
+            <br>
+
+            <!-- Botón de SUBMIT para guardar el comentario -->
+            <div>
+              <input type="submit" class="btn btn-primary" value="Comment">
+            </div>
+
+          </form>
+          <!-- === END FORM === -->
+
+          <!-- =======  END COMMENTS ======= -->
+
+        </div>
+      </div>
+    </section>
+    <!-- ======= END INNER PAGE ======= -->
+
+  </main>
+  <!-- ================================== END MAIN ==================================== -->
+
+
+  <!-- =================================== SCRIPT ===================================== -->
+  <!-- Controla que la puntuación se encuentre entre 0 y 10 -->
+  <!-- Si la puntuación introducida no está en el rango se pone automáticamente la 
+    puntuación válida más cercana -->
+  <script>
+    const validateRating = (val) => {
+      if (val < 0) {
+        document.getElementById("ratingForm").value = 0;
+      } else if (val > 10) {
+        document.getElementById("ratingForm").value = 10
+      }
+
+    }
+  </script>
+  <!-- ================================ FIN SCRIPT ===================================== -->
+
+  <!-- =================================== SCRIPT ===================================== -->
+  <!-- Script para obtener el usuario que está registrado en ese momento a partir de su ID -->
+  <script>
+    console.log(document.getElementById("pito").value)
+  </script>
+  <!-- ================================ FIN SCRIPT ===================================== -->
+
+
+  <a onclick="topFunction()" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script th:src="@{/vendor/aos/aos.js}"></script>
+  <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+  <script th:src="@{/vendor/glightbox/js/glightbox.min.js}"></script>
+  <script th:src="@{/vendor/isotope-layout/isotope.pkgd.min.js}"></script>
+  <script th:src="@{/vendor/swiper/swiper-bundle.min.js}"></script>
+  <script th:src="@{/vendor/waypoints/noframework.waypoints.js}"></script>
+  <script th:src="@{/vendor/php-email-form/validate.js}"></script>
+
+  <!-- Template Main JS File -->
+  <script th:src="@{/js/main.js}"></script>
+</body>
+
+</html>

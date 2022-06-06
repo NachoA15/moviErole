@@ -1,0 +1,12 @@
+2022-06-02 20:34:26 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Valor demasiado largo para la columna "IMG VARCHAR(255)": "'https://img.wattpad.com/2f50bf69486834c00f9ed6abfca41c3a05a747f2/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061... (301)"
+Value too long for column "IMG VARCHAR(255)": "'https://img.wattpad.com/2f50bf69486834c00f9ed6abfca41c3a05a747f2/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061... (301)"; SQL statement:
+update user set bio=?, birthdate=?, email=?, img=?, my_movies=?, name=?, password=?, surname=?, username=?, watch_later=? where id=? [22001-200]
+2022-06-02 20:34:55 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Valor demasiado largo para la columna "IMG VARCHAR(255)": "'https://img.wattpad.com/2f50bf69486834c00f9ed6abfca41c3a05a747f2/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061... (301)"
+Value too long for column "IMG VARCHAR(255)": "'https://img.wattpad.com/2f50bf69486834c00f9ed6abfca41c3a05a747f2/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061... (301)"; SQL statement:
+update user set bio=?, birthdate=?, email=?, img=?, my_movies=?, name=?, password=?, surname=?, username=?, watch_later=? where id=? [22001-200]
+2022-06-04 14:22:54 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT * FROMUSER_ROLES[*]"
+Syntax error in SQL statement "SELECT * FROMUSER_ROLES[*]"; SQL statement:
+SELECT * FROMUSER_ROLES [42000-200]
